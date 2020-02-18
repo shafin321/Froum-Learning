@@ -37,6 +37,7 @@ namespace ForumDemo
 			services.AddTransient<IEmailSender, EmailSender>();
 			services.AddScoped<IForum, ForumService>();
 			services.AddScoped<IPost, PostService>();
+			services.AddScoped<IApplicationUser, ApplicationUserService>();
 			services.AddTransient<DataSeeder>();
 
 			services.AddMvc();

@@ -36,8 +36,8 @@ namespace ForumDemo.Controllers
 				AuthorImageUrl=user.ProfileImageurl,
 				AuthorRating=user.Rating,
 				IsAuthorAdmin=User.IsInRole("Admin"),
-
-				ForumName=post.Forum.Title,
+				//IsAuthorAdmin = user.IsActive,
+				ForumName =post.Forum.Title,
 				ForumId=post.Forum.Id,
 				ForumImageUrl=post.Forum.ImageUrl,
 
@@ -58,7 +58,7 @@ namespace ForumDemo.Controllers
 			var reply = BuildReply(model, user);
 
 		await 	_post.AddReply(reply);
-			await _user.IncreamentRating(userId, typeof(Post));
+		//	await _user.IncreamentRating(userId, typeof(Post));
 
 			return RedirectToAction("Index", "Post", new { id = model.PostId });
 		}
