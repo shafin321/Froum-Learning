@@ -1,0 +1,12 @@
+C:\Users\Shujaul\source\repos\ForumDemo\ForumDemo\bin\Debug\netcoreapp2.0\ForumDemo.deps.json
+C:\Users\Shujaul\source\repos\ForumDemo\ForumDemo\bin\Debug\netcoreapp2.0\ForumDemo.runtimeconfig.json
+C:\Users\Shujaul\source\repos\ForumDemo\ForumDemo\bin\Debug\netcoreapp2.0\ForumDemo.runtimeconfig.dev.json
+C:\Users\Shujaul\source\repos\ForumDemo\ForumDemo\bin\Debug\netcoreapp2.0\ForumDemo.dll
+C:\Users\Shujaul\source\repos\ForumDemo\ForumDemo\bin\Debug\netcoreapp2.0\ForumDemo.pdb
+C:\Users\Shujaul\source\repos\ForumDemo\ForumDemo\obj\Debug\netcoreapp2.0\ForumDemo.csprojAssemblyReference.cache
+C:\Users\Shujaul\source\repos\ForumDemo\ForumDemo\obj\Debug\netcoreapp2.0\ForumDemo.csproj.CoreCompileInputs.cache
+C:\Users\Shujaul\source\repos\ForumDemo\ForumDemo\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\Shujaul\source\repos\ForumDemo\ForumDemo\obj\Debug\netcoreapp2.0\ForumDemo.AssemblyInfoInputs.cache
+C:\Users\Shujaul\source\repos\ForumDemo\ForumDemo\obj\Debug\netcoreapp2.0\ForumDemo.AssemblyInfo.cs
+C:\Users\Shujaul\source\repos\ForumDemo\ForumDemo\obj\Debug\netcoreapp2.0\ForumDemo.dll
+C:\Users\Shujaul\source\repos\ForumDemo\ForumDemo\obj\Debug\netcoreapp2.0\ForumDemo.pdb
