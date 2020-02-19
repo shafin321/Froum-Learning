@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using ForumDemo.Models;
 using ForumDemo.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace ForumDemo.Controllers
 {
@@ -12,10 +17,16 @@ namespace ForumDemo.Controllers
     {
 		private readonly IForum _forum;
 		private readonly IPost _post;
-		public ForumController(IForum forum, IPost post)
+		private readonly IApplicationUser _userService;
+		private readonly IUpload _uploadService;
+		private readonly IConfiguration _configuration;
+		public ForumController(IForum forum, IPost post, IConfiguration configuration, IApplicationUser userService, IUpload uploadService)
 		{
 			_forum = forum;
 			_post = post;
+			_configuration = configuration;
+			_userService = userService;
+			_uploadService = uploadService;
 		}
         public IActionResult Index()
         {
@@ -99,7 +110,46 @@ namespace ForumDemo.Controllers
 
 			return View(model);
 		}
+		[HttpPost]
+		public async Task<IActionResult> AddForum(AddForumModel model)
+		{
+			var imageUri = "";
 
+			if (model.ImageUpload != null)
+			{
+				var blockBlob = PostForumImage(model.ImageUpload);
+				imageUri = blockBlob.Uri.AbsoluteUri;
+			}
+
+			else
+			{
+				imageUri = "/images/users/default.png";
+			}
+
+			var forum = new  Forum()
+			{
+				Title = model.Title,
+				Description = model.Description,
+				Created = DateTime.Now,
+				ImageUrl = imageUri
+			};
+
+			 _forum.Create(forum);
+			return RedirectToAction("Index", "Forum");
+		}
+
+
+		public CloudBlockBlob PostForumImage(IFormFile file)
+		{
+			var connectionString = _configuration.GetConnectionString("AzureStorageConnetion");
+			var container = _uploadService.GetBlobContainer(connectionString);
+			var parsedContentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
+			var filename = Path.Combine(parsedContentDisposition.FileName.ToString().Trim('"'));
+			var blockBlob = container.GetBlockBlobReference(filename);
+			blockBlob.UploadFromStreamAsync(file.OpenReadStream());
+
+			return blockBlob;
+		}
 	}
 
 	}

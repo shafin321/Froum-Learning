@@ -17,7 +17,9 @@ namespace ForumDemo.Models
 		}
 		public Forum Create(Forum forum)
 		{
-			throw new NotImplementedException();
+			_context.Add(forum);
+			_context.SaveChanges();
+			return forum;
 		}
 
 		public Forum Delete(int id)
