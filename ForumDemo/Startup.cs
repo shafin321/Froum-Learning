@@ -38,6 +38,8 @@ namespace ForumDemo
 			services.AddScoped<IForum, ForumService>();
 			services.AddScoped<IPost, PostService>();
 			services.AddScoped<IApplicationUser, ApplicationUserService>();
+			services.AddScoped<IUpload, UploadService>();
+
 			services.AddTransient<DataSeeder>();
 
 			services.AddMvc();
