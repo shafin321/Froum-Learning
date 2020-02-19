@@ -62,5 +62,25 @@ namespace ForumDemo.Controllers
 
 			return RedirectToAction("Detail", "Profile", new { id = userId });
 		}
+
+		public IActionResult Index()
+		{
+			var profile = _userService.GetALL().
+				OrderByDescending(users => users.Rating).
+				Select(user => new ProfileModel
+				{
+					Email=user.Email,
+					UserName=user.UserName,
+					ProfileImageUrl=user.ProfileImageurl,
+					UserRating=user.Rating.ToString(),
+					MemberSince=user.MemberSince,
+
+				});
+			var model = new ProfileListModel
+			{
+				Profiles=profile,
+			};
+			return View(model);
+		}
 	}
 }

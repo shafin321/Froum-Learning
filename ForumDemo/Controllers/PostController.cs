@@ -14,13 +14,15 @@ namespace ForumDemo.Controllers
 		private readonly IPost _post;
 		private readonly IForum _forum;
 		private static UserManager<ApplicationUser> _usermanager;
+		private readonly IApplicationUser _user;
 
 
-		public PostController(IPost post, IForum forum, UserManager<ApplicationUser>userManager)
+		public PostController(IPost post, IForum forum, UserManager<ApplicationUser>userManager,IApplicationUser user)
 		{
 			_post = post;
 			_forum = forum;
 			_usermanager = userManager;
+			_user = user;
 
 		}
 
@@ -99,6 +101,7 @@ namespace ForumDemo.Controllers
 			var post = BuildPost(model, user);
 
 			  _post.Create(post);
+			await _user.IncreamentRating(userId,typeof(Post));
 
 			return RedirectToAction("Index","Post" ,new {post.Id});
 

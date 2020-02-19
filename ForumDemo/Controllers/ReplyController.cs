@@ -58,7 +58,8 @@ namespace ForumDemo.Controllers
 			var reply = BuildReply(model, user);
 
 		await 	_post.AddReply(reply);
-		//	await _user.IncreamentRating(userId, typeof(Post));
+			await _user.IncreamentRating(userId, typeof(PostReply));
+			//	await _user.IncreamentRating(userId, typeof(Post));
 
 			return RedirectToAction("Index", "Post", new { id = model.PostId });
 		}

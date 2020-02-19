@@ -139,6 +139,31 @@ background-position:right;
 	width: 40px;
 	background-color: #ddd;
 }
+/*userProfile index image */
+
+.userProfilePic {
+	height: 140px;
+	width: 140px;
+	background-size:100%;
+}
+/*Reply Content 
+.replyContent {
+	display: table;
+	background-color: #fff;
+	border-bottom: 1px solid #aaa;
+	width: inherit;
+}
+.replyRow {
+	background-color: #3F51B5;
+	padding: 8px;
+}
+	*/
+
+
+
+
+
+
 
 /* Forum index */
 #forumIndexTable td {

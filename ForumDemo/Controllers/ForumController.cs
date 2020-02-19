@@ -92,6 +92,13 @@ namespace ForumDemo.Controllers
 		}
 
 
+		public IActionResult Create()
+		{
+
+			var model = new AddForumModel();
+
+			return View(model);
+		}
 
 	}
 
